@@ -97,7 +97,6 @@
     const el = document.getElementById("btn");
     el.addEventListener("click", function ()
     {
-        console.log("click event!!!!");
         // Remove form from screen
         document.getElementById("dino-compare").style.display = "none";
         GetHumanData();
