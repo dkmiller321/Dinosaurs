@@ -80,6 +80,7 @@
     // Use IIFE to get human data from form
     function GetHumanData() 
     {
+        return (function (){
         Human.image = "./images/human.png";
         Human.name = document.getElementById("name").value;
         Human.weight = parseFloat(document.getElementById("weight").value);
@@ -87,6 +88,7 @@
         var inches = parseFloat(document.getElementById("inches").value);
         var feet = parseFloat(document.getElementById("feet").value);
         Human.height = (feet*12+inches);
+        })();
     }
   
     // Add event listener to table
