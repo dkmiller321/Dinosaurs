@@ -75,7 +75,7 @@
         dino => new Organism(dino.species,dino.weight,dino.height,dino.diet,dino.where,dino.when,dino.fact)));
 
     // Create Human Object
-    var Human = new Organism();
+    let Human = new Organism();
     
     // Use IIFE to get human data from form
     function GetHumanData() 
@@ -85,8 +85,10 @@
         Human.name = document.getElementById("name").value;
         Human.weight = parseFloat(document.getElementById("weight").value);
         Human.diet = document.getElementById("diet").value;
-        var inches = parseFloat(document.getElementById("inches").value);
-        var feet = parseFloat(document.getElementById("feet").value);
+        
+        //Convert to inches
+        let inches = parseFloat(document.getElementById("inches").value);
+        let feet = parseFloat(document.getElementById("feet").value);
         Human.height = (feet*12+inches);
         })();
     }
@@ -114,18 +116,25 @@
             dino.compareWeights(Human.weight);
             dino.listOfFacts.push("Im from "+dino.where);
             dino.listOfFacts.push("I lived during the "+dino.when+" period");
+            
+            // Add pigeon fact
             if (dino.species == "Pigeon") {
                 fact = "All birds are dinosaurs."
             }
             else
             {
-                var randomIndex = Math.floor(Math.random() * dino.listOfFacts.length)
+                // Select random fact
+                let randomIndex = Math.floor(Math.random() * dino.listOfFacts.length)
                 fact = dino.listOfFacts[randomIndex];
             }
+            
+            // Add dino tile
             let dinoTile = addNewTile(dino.species, dino.image, fact);
 
             document.getElementById("grid")
                 .appendChild(dinoTile);
+            
+            // Add human tile in the middle of grid
             if (index == 3) 
             {
                 let humanTile = addNewTile(Human.name, Human.image);
@@ -148,7 +157,7 @@
         imageElement.src = image;
         tile.appendChild(imageElement);
         
-        
+        // Human tile will not have a fact
         if (fact) 
         {
             let factElement = document.createElement("p");
